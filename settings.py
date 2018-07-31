@@ -1,5 +1,5 @@
 from os import environ
-
+EXTENSION_APPS = ['pinky_app']
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
 # the session config can be accessed from methods in your apps as self.session.config,
@@ -12,14 +12,23 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    #{
-    #    'name': 'public_goods',
-    #    'display_name': "Public Goods",
-    #    'num_demo_participants': 3,
-    #    'app_sequence': ['public_goods', 'payment_info'],
-    #},
+    {
+        'name': 'pinky_baseline',
+        'display_name': "Fisher et al. piece-rate, easy",
+        'num_demo_participants': 2,
+        'app_sequence': ['pinky_app'],
+        'contract_type': 'piece-rate',
+        'target_level': 'easy',
+    },
+    {
+        'name': 'pinky_budget',
+        'display_name': "Fisher et al. group-based, budget-linear, moderate",
+        'num_demo_participants': 2,
+        'app_sequence': ['pinky_app'],
+        'contract_type': 'budget-linear',
+        'target_level': 'moderate',
+    },
 ]
-
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
@@ -30,7 +39,6 @@ REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
 ROOMS = []
-
 
 # AUTH_LEVEL:
 # this setting controls which parts of your site are freely accessible,
@@ -48,7 +56,6 @@ AUTH_LEVEL = environ.get('OTREE_AUTH_LEVEL')
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
-
 
 # Consider '', None, and '0' to be empty/false
 DEBUG = (environ.get('OTREE_PRODUCTION') in {None, '', '0'})

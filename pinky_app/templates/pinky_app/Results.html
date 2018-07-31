@@ -2,11 +2,34 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Results
 {% endblock %}
 
 {% block content %}
-
+    <table class="table">
+        <tr>
+            <td>Your payoff:</td>
+            <td>{{ player.payoff }}</td>
+        </tr>
+        <tr>
+            <td>In work session you have solved tasks correctly:</td>
+            <td>{{ player.tasks_solved }}</td>
+        </tr>
+        {% if group.contract_type == 'budget-linear' %}
+            <tr>
+                <td>Your group target was:</td>
+                <td>{{ group.target }}</td>
+            </tr>
+            <tr>
+                <td>Total number of tasks solved by your group:</td>
+                <td>{{ group.sum_live_correct }}</td>
+            </tr>
+            <tr>
+                <td>Your group target is:</td>
+                <td>{{ group.get_target_met_display }}</td>
+            </tr>
+        {% endif %}
+    </table>
     {% next_button %}
 {% endblock %}
 

@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Announcing target
+{% endblock %}
+
+{% block content %}
+    {% if group.contract_type == 'budget-linear' %}
+        <table class="table">
+            <tr>
+                <td>
+                    Difficulty of target level
+                </td>
+                <td>{{ group.target_level }}</td>
+            </tr>
+            <tr>
+                <td>Target for your group:</td>
+                <td>{{ group.target }}</td>
+            </tr>
+        </table>
+    {% endif %}
+    <div class="card">
+        <div class="card-body">
+            Now the work session will start. Your efficiency in working sessions affect your earnings.
+        </div>
+    </div>
+    <div class="my-3">
+        {% next_button %}
+    </div>
+{% endblock %}
